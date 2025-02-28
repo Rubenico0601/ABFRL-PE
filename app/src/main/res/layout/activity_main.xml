@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Top Navigation Bar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="10dp">
+
+                <!-- Hamburger Menu Icon -->
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/menu"
+                    android:padding="8dp"
+                    android:contentDescription="Menu" />
+
+                <!-- Search Bar -->
+                <EditText
+                    android:id="@+id/search_bar_top"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Search..."
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:padding="10dp"
+                    android:background="@android:drawable/edit_text"
+                    android:layout_marginLeft="10dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="For Her"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:gravity="center" />
+
+            <!-- Top Banner -->
+            <FrameLayout
+                android:id="@+id/top_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <!-- Circular Carousel -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/circular_carousel"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:overScrollMode="never"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp" />
+
+            <TextView
+                android:id="@+id/brands"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top Brands for You"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <!-- Square Carousel -->
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/square_carousel"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                android:overScrollMode="never"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:id="@+id/men"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="For Him"
+                android:textColor="@android:color/black"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"/>
+
+            <!-- Bottom Banner -->
+            <FrameLayout
+                android:id="@+id/bottom_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+            </FrameLayout>
+
+            <!-- Bottom Search Bar -->
+            <EditText
+                android:id="@+id/search_bar_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search..."
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:padding="10dp"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="10dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Sidebar Navigation -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@android:color/white"
+        app:menu="@menu/navigation_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

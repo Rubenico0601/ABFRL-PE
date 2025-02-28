@@ -1,0 +1,39 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/main_items">
+    <item
+        android:id="@+id/nav_tshirt"
+        android:title="T-Shirts"
+        android:icon="@drawable/tshirt" />
+
+    <item
+        android:id="@+id/nav_shirt"
+        android:title="Shirts"
+        android:icon="@drawable/shirt" />
+
+    <item
+        android:id="@+id/nav_pants"
+        android:title="Pants"
+        android:icon="@drawable/pants" />
+
+    <item
+        android:id="@+id/nav_shoes"
+        android:title="Shoes"
+        android:icon="@drawable/shoes" />
+
+    <item
+        android:id="@+id/nav_watches"
+        android:title="Watches"
+        android:icon="@drawable/watch" />
+    </group>
+
+    <group android:id="@+id/back_button">
+    <item
+        android:id="@+id/nav_back"
+        android:title="Back"
+        android:icon="@drawable/close"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    </group>
+</menu>
