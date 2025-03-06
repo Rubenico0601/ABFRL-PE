@@ -16,13 +16,14 @@ import java.util.List;
 
 public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHolder> {
 
-    private List<Integer> imageList;
+    private List<String> imageURL;
+    private  List<Integer> imageList;
     private List<String> labelList;
     private boolean showLabels;
 
     // Constructor for Circular images with labels
-    public CarouselAdapter(List<Integer> imageList, List<String> labelList) {
-        this.imageList = imageList;
+    public CarouselAdapter(List<String> imageList, List<String> labelList) {
+        this.imageURL = imageList;
         this.labelList = labelList;
         this.showLabels = true;
     }
@@ -60,27 +61,44 @@ public class CarouselAdapter extends RecyclerView.Adapter<CarouselAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int actualPosition = position % imageList.size();
+        if (showLabels && imageURL != null) {
+            int actualPosition = position % imageURL.size();
+            Glide.with(holder.imageView.getContext())
+                    .load(imageURL.get(actualPosition))
+                    .override(300, 300)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .into(holder.imageView);
 
-        // Load the image using Glide
-        Glide.with(holder.imageView.getContext())
-                .load(imageList.get(actualPosition))
-                .override(300, 300)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(holder.imageView);
+            if (labelList != null && actualPosition < labelList.size()) {
+                holder.imageLabel.setText(labelList.get(actualPosition));
+                holder.imageLabel.setVisibility(View.VISIBLE);
+            } else {
+                holder.imageLabel.setVisibility(View.GONE);
+            }
+        }
+        else if (imageList != null) { // Square images case
+            int brandPosition = position % imageList.size();
+            Glide.with(holder.imageView.getContext())
+                    .load(imageList.get(brandPosition))
+                    .override(300, 300)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop()
+                    .into(holder.imageView);
 
-        // Show labels for circular images only
-        if (showLabels && labelList != null && actualPosition < labelList.size()) {
-            holder.imageLabel.setText(labelList.get(actualPosition));
-            holder.imageLabel.setVisibility(View.VISIBLE);
-        } else {
-            holder.imageLabel.setVisibility(View.GONE);
+            holder.imageLabel.setVisibility(View.GONE); // No labels for square images
         }
     }
 
     @Override
     public int getItemCount() {
-        return imageList.size();
+        if (imageURL != null) {
+            return imageURL.size();
+        }
+        if (imageList != null) {
+            return imageList.size();
+        }
+        return 0;
     }
+
 }

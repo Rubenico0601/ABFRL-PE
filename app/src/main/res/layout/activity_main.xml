@@ -14,6 +14,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/main_layout"
             android:orientation="vertical"
             android:padding="16dp">
 
@@ -22,6 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:id="@+id/top_navigation"
                 android:gravity="center_vertical"
                 android:paddingBottom="10dp">
 
@@ -32,6 +34,7 @@
                     android:layout_height="40dp"
                     android:src="@drawable/menu"
                     android:padding="8dp"
+                    android:visibility="gone"
                     android:contentDescription="Menu" />
 
                 <!-- Search Bar -->
@@ -43,8 +46,53 @@
                     android:hint="Search..."
                     android:drawableStart="@android:drawable/ic_menu_search"
                     android:padding="10dp"
+                    android:visibility="gone"
                     android:background="@android:drawable/edit_text"
                     android:layout_marginLeft="10dp" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/search_bar_top_auto"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:hint="Search..."
+                    android:drawableStart="@android:drawable/ic_menu_search"
+                    android:padding="10dp"
+                    android:visibility="gone"
+                    android:background="@android:drawable/edit_text"
+                    android:layout_marginLeft="10dp"
+                    android:completionThreshold="1" />
+
+                <!-- Toggle Switch (Now on the Right of Search Bar) -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:padding="8dp">
+
+
+                    <ImageView
+                        android:id="@+id/female_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/female_icon"
+                        android:contentDescription="Female" />
+
+                    <Switch
+                        android:id="@+id/gender_toggle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <ImageView
+                        android:id="@+id/male_icon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/male_icon"
+                        android:contentDescription="Male" /></LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -54,6 +102,8 @@
                 android:text="For Her"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
                 android:gravity="center" />
 
             <!-- Top Banner -->
@@ -71,6 +121,7 @@
                 android:text="Categories"
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
+                android:visibility="gone"
                 android:gravity="center"
                 android:layout_marginTop="10dp"/>
 
@@ -83,6 +134,7 @@
                 android:clipChildren="false"
                 android:overScrollMode="never"
                 android:paddingStart="16dp"
+                android:visibility="gone"
                 android:paddingEnd="16dp" />
 
             <TextView
@@ -115,6 +167,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="30sp"
                 android:gravity="center"
+                android:visibility="gone"
                 android:layout_marginTop="10dp"/>
 
             <!-- Bottom Banner -->
@@ -131,10 +184,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Search..."
+                android:visibility="gone"
                 android:drawableStart="@android:drawable/ic_menu_search"
                 android:padding="10dp"
                 android:background="@android:drawable/edit_text"
                 android:layout_marginTop="10dp"/>
+            <AutoCompleteTextView
+                android:id="@+id/search_bar_bottom_auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search..."
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:padding="10dp"
+                android:visibility="gone"
+                android:background="@android:drawable/edit_text"
+                android:layout_marginTop="10dp"
+                android:completionThreshold="1" />
         </LinearLayout>
     </ScrollView>
 
